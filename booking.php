@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Booking</title>
+	<title>Booking System</title>
 	<link rel="stylesheet" type="text/css" href="css/unique.css">
 	<style type="text/css">
 		body{
