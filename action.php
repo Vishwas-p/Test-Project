@@ -57,8 +57,6 @@ if (mysqli_num_rows($record_set)<1) {
 	}
 
 mysqli_close($connection);
-
-
 ?>
 
 
