@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>User Login</title>
+	<title>User Login-THS</title>
 	<link rel="stylesheet" type="text/css" href="css/unique.css">
 <style type="text/css">
 	body{
