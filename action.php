@@ -15,7 +15,7 @@ $connection = mysqli_connect ("localhost","root","","trustedhomeservice");
 
 $query_text="SELECT * FROM `customer_bookings` WHERE order_ID=$b_ID AND c_mobile=$b_mobile";
 
-echo "<br>";
+echo "<br><br>";
 
 $record_set=mysqli_query($connection, $query_text);
 
