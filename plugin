@@ -1,1 +1,31 @@
+$root = dirname(dirname(dirname(dirname(dirname(dirname(__FILE__))))));
+require_once $root.'/wp-load.php';
+if ( ! function_exists( 'wp_handle_upload' ) ){
+    require_once( ABSPATH . 'wp-admin/includes/image.php' );
+    require_once( ABSPATH . 'wp-admin/includes/file.php' );
+}
+$redirect = explode('&', $_POST['oldurl']);
+$redirect = array_slice($redirect, 0, 2);
+$redirect = implode('&', $redirect);
+$username = explode("@",$_POST['email']);
 
+
+
+if($_FILES['clientimage']['name'] != ''){
+    $uploadedfile = $_FILES['clientimage'];
+    $upload_overrides = array( 'test_form' => false );
+    $movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
+    $wp_upload_dir = wp_upload_dir();
+    $attachment = array(
+        "guid" => $movefile['file'], 
+        "post_mime_type" => $movefile['type'],
+        "post_title" => $_FILES['clientimage']['name'],
+        "post_content" => "",
+        "post_status" => "inherit"
+    );
+    $imageId = wp_insert_attachment( $attachment, $movefile['file'],0);
+    $attach_data = wp_generate_attachment_metadata( $imageId, $movefile['file'] );
+    wp_update_attachment_metadata( $imageId, $attach_data );
+}else{
+    $imageId = get_user_meta($_POST['userId'], 'ytterp_user_avatar', true);
+}
